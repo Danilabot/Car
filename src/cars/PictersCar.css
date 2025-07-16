@@ -1,0 +1,39 @@
+/* Модалка */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Картинка в модалке */
+.modal-content {
+  max-width: 800px;
+  max-height: 800px;
+  border-radius: 8px;
+}
+
+/* Крестик */
+.close {
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  font-size: 48px;
+  color: rgb(255, 255, 255);
+  cursor: pointer;
+  z-index: 10000;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px 12px;
+  border-radius: 50%;
+  line-height: 1;
+}
+
+.modal-content-wrapper {
+  position: relative;
+}

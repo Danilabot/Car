@@ -1,0 +1,46 @@
+.thumbnail {
+  width: 100%;
+  height: 170px;
+  cursor: pointer;
+  object-fit: contain;
+}
+.car-grid {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  margin-top: 90px;
+  margin-bottom: 90px;
+}
+
+.car-item {
+  width: 200px;
+  height: 230px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  box-shadow: 0 0px 9px rgba(0, 0, 0, 0.1);
+  background-color: #8d8d8d1a;
+  padding: 7px;
+}
+
+.car-text {
+  text-align: right;
+  font-size: 14px;
+  color: #fffefe;
+}
+button {
+  font-size: 30px;
+  width: 200px;
+  height: auto;
+  background: rgba(128, 128, 128, 0.096);
+  border: 3px solid rgba(189, 189, 189, 0.91);
+  color: rgba(0, 0, 0, 0.86);
+  cursor: pointer;
+}
+.backgraund {
+  background-color: black;
+}

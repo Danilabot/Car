@@ -1,0 +1,9 @@
+.text {
+  max-width: 80%;
+  margin: 25px auto;
+  padding: 15px;
+  border-radius: 15px;
+}
+.textP {
+  text-align: left;
+}
