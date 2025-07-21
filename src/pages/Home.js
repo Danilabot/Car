@@ -1,12 +1,31 @@
 import React from 'react'
 import './Home.css'
+import { useState, useEffect } from 'react'
 function Home() {
+  const [showText, setShowText] = useState(false)
+  const [visibleTooltipIndex, setVisibleTooltipIndex] = useState(null)
   const cars = [
     { id: 1, name: 'Запись на сервис', image: 'icona1.png' },
 
     { id: 2, name: 'Автомобили с пробегом', image: 'icona2.png' },
     { id: 3, name: 'Дилер ', image: 'icona3.png' },
   ]
+  useEffect(() => {
+    if (showText !== null) {
+      const timer = setTimeout(() => {
+        setShowText(null)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [showText])
+  useEffect(() => {
+    if (visibleTooltipIndex !== null) {
+      const timer = setTimeout(() => {
+        setVisibleTooltipIndex(null)
+      }, 3000)
+      return () => clearTimeout(timer)
+    }
+  }, [visibleTooltipIndex])
   return (
     <div className="content">
       <div className="home-page">
@@ -20,11 +39,36 @@ function Home() {
       <p>ВАШ Mersedes</p>
       <h1> ВЫБЕРИТЕ ДЛЯ СЕБЯ</h1>
       <div className="catalog-car">
-        {cars.map((car) => (
+        {cars.map((car, index) => (
           <div key={car.id} className="catalog-item">
             <img src={car.image} />
             <h1>{car.name}</h1>
-            <button style={{ cursor: 'pointer' }}>Подробнее</button>
+            <button
+              style={{ cursor: 'pointer' }}
+              onClick={() => {
+                setVisibleTooltipIndex(
+                  index === visibleTooltipIndex ? null : index
+                )
+              }}
+            >
+              Подробнее
+            </button>
+            {visibleTooltipIndex === index && (
+              <div
+                style={{
+                  bottom: '40px',
+                  left: '0',
+                  backgroundColor: '#2d8d8d1a',
+                  border: '1px solid #ccc',
+                  padding: '5px 10px',
+                  borderRadius: '4px',
+                  boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                  zIndex: 10,
+                }}
+              >
+                Дополняется
+              </div>
+            )}
           </div>
         ))}
       </div>
@@ -33,6 +77,7 @@ function Home() {
           <p>Автомобили с пробегом</p>
           <h1>Mersedes с пробегом в наличии</h1>
           <button
+            onClick={() => setShowText(!showText)}
             style={{
               color: ' rgba(255, 255, 255, 0.86)',
               fontSize: '25px',
@@ -43,6 +88,22 @@ function Home() {
           >
             Узнать больше
           </button>
+          {showText && (
+            <div
+              style={{
+                bottom: '40px',
+                left: '0',
+                backgroundColor: '#2d8d8d1a',
+                border: '1px solid #ccc',
+                padding: '5px 10px',
+                borderRadius: '4px',
+                boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
+                zIndex: 10,
+              }}
+            >
+              Дополняется
+            </div>
+          )}
         </div>
       </div>
       <div className="solon">
